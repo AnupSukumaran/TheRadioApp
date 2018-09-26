@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TheRadioApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TheRadioApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,20 +28,35 @@
                                 </constraints>
                                 <state key="normal" image="play"/>
                                 <state key="selected" image="pause"/>
+                                <connections>
+                                    <action selector="playAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DeE-f7-tbS"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NowPlayingBars" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-W8-s3N">
+                                <rect key="frame" x="334" y="110" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="AXp-9O-fya"/>
+                                    <constraint firstAttribute="width" constant="25" id="jpP-nm-HUS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="08Q-RX-tM8"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9ZX-5m-hfM"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EVY-hw-hY5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u9V-W8-s3N" secondAttribute="trailing" constant="16" id="I91-TI-fqc"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Txf-2e-Hcj"/>
                             <constraint firstAttribute="bottom" secondItem="9cf-by-Hcf" secondAttribute="bottom" id="XiO-d7-1uc"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdK-ZA-END"/>
+                            <constraint firstItem="u9V-W8-s3N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="ucy-Dv-Q6T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Mqw-R8-loU"/>
+                    <connections>
+                        <outlet property="barAnimations" destination="u9V-W8-s3N" id="HCB-m7-Vi5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,6 +82,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NowPlayingBars" width="19" height="19"/>
         <image name="backgroung" width="720" height="1280"/>
         <image name="pause" width="178" height="178"/>
         <image name="play" width="178" height="178"/>

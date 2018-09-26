@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DB215A7FE40077CC37 /* HomeFn.swift */; };
+		5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */; };
 		6FD76030215A09D800B67378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD7602F215A09D800B67378 /* AppDelegate.swift */; };
-		6FD76032215A09D800B67378 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76031215A09D800B67378 /* ViewController.swift */; };
+		6FD76032215A09D800B67378 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76031215A09D800B67378 /* HomeViewController.swift */; };
 		6FD76035215A09D800B67378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD76033215A09D800B67378 /* Main.storyboard */; };
 		6FD76038215A09D900B67378 /* TheRadioApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76036215A09D900B67378 /* TheRadioApp.xcdatamodeld */; };
 		6FD7603A215A0A1F00B67378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FD76039215A0A1F00B67378 /* Assets.xcassets */; };
@@ -35,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A13A9DB215A7FE40077CC37 /* HomeFn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFn.swift; sourceTree = "<group>"; };
+		5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
 		6FD7602C215A09D800B67378 /* TheRadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD7602F215A09D800B67378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6FD76031215A09D800B67378 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6FD76031215A09D800B67378 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6FD76034215A09D800B67378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FD76037215A09D900B67378 /* TheRadioApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheRadioApp.xcdatamodel; sourceTree = "<group>"; };
 		6FD76039215A0A1F00B67378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +80,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A13A9D7215A7B450077CC37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FD76031215A09D800B67378 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5A13A9D8215A7F620077CC37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6FD76033215A09D800B67378 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A13A9D9215A7F670077CC37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A13A9DA215A7F710077CC37 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */,
+				5A13A9DB215A7FE40077CC37 /* HomeFn.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		6FD76023215A09D700B67378 = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				6FD7602F215A09D800B67378 /* AppDelegate.swift */,
-				6FD76031215A09D800B67378 /* ViewController.swift */,
-				6FD76033215A09D800B67378 /* Main.storyboard */,
+				5A13A9DA215A7F710077CC37 /* Functions */,
+				5A13A9D9215A7F670077CC37 /* Model */,
+				5A13A9D8215A7F620077CC37 /* View */,
+				5A13A9D7215A7B450077CC37 /* Controller */,
 				6FD76039215A0A1F00B67378 /* Assets.xcassets */,
 				6FD7603B215A0A1F00B67378 /* LaunchScreen.storyboard */,
 				6FD7603E215A0A1F00B67378 /* Info.plist */,
@@ -259,8 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */,
+				5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */,
 				6FD76038215A09D900B67378 /* TheRadioApp.xcdatamodeld in Sources */,
-				6FD76032215A09D800B67378 /* ViewController.swift in Sources */,
+				6FD76032215A09D800B67378 /* HomeViewController.swift in Sources */,
 				6FD76030215A09D800B67378 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
