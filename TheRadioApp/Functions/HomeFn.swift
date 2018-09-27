@@ -12,37 +12,27 @@ import AVFoundation
 
 protocol FunctionRemainingActionDelegate: class {
     func startAnimation()
+    func startLoadingIndicator()
+    func stopLoadingIndicator()
    // func stopAnimation()
 }
 
 class HomeFn: NSObject {
     
     static let shared = HomeFn()
+    var audioTitle = "The Jazzmas Channel"
+    var audioUrl = "http://185.80.220.101/1647_64"
     
     weak var delegate: FunctionRemainingActionDelegate?
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     
-////    override init() {
-////        super.init()
-////        print("getInital")
-////    }
-//    override init() {
-//        super.init()
-//        print("Iniita;l")
-//        delegate = nil
-//    }
-    
-//    convenience init(vc: AnyObject) {
-//        self.init()
-//         print("Iniita;l2")
-//        self.delegate = vc as! HomeViewController
-//    }
+
     
     func definingPlayer() {
         
         if playerItem == nil {
-            print("PlayerItem is Nil")
+            delegate?.startLoadingIndicator()
             prepareToPlay()
             
         } else {
@@ -55,8 +45,14 @@ class HomeFn: NSObject {
         
       //  let url = URL(string:"http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p")
         
-        //http://philae.shoutca.st:8399/autodj
-        let url = URL(string:"http://185.80.220.101/1647_64")
+        //http://185.80.220.101/1647_64 -  The Jazzmas Channel
+        //http://listen.011fm.com/stream27   - Holiday Jazz
+        //http://192.232.192.96:9978/stream    - Jazz Blues Soul
+        //http://185.80.220.101/1radio_smoothjazz_128    - The Wave Smooth Jazz
+        //http://bigrradio.cdnstream1.com/5127_128    - The Vocal Jazz Channel
+        //http://listen.57fm.com/toj    - A Taste of Jazz
+        //http://allzic40.ice.infomaniak.ch/allzic40.mp3    -  Allzic - Jazz
+        let url = URL(string: audioUrl)
         let asset = AVAsset(url: url!)
         
         let assetKeys = ["playable", "hasProtectedContent" ]
@@ -112,7 +108,7 @@ class HomeFn: NSObject {
              print("bufferToPlay")
             
             delegate?.startAnimation()
-           
+            delegate?.stopLoadingIndicator()
         }
         
 

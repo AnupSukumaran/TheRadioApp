@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   JazzList.plist
+   JazzRadio
+
+   Created by Sukumar Anup Sukumaran on 27/09/18.
+   Copyright (c) 2018 TechTonic. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>jazzName</key>
+        <array>
+            <string>The Jazzmas Channel</string>
+            <string>Holiday Jazz</string>
+            <string>Jazz Blues Soul</string>
+            <string>The Wave Smooth Jazz</string>
+        </array>
+        <key>jazzAudioUrl</key>
+        <array>
+            <string>http://185.80.220.101/1647_64</string>
+            <string>http://listen.011fm.com/stream27</string>
+            <string>http://192.232.192.96:9978/stream</string>
+            <string>http://185.80.220.101/1radio_smoothjazz_128</string>
+        </array>
+    </dict>
+</plist>
+
+

@@ -12,7 +12,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TheRadioApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="JazzRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroung" translatesAutoresizingMaskIntoConstraints="NO" id="9cf-by-Hcf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aB-JH-2TI">
+                                <rect key="frame" x="143" y="361.66666666666669" width="89" height="89"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fZ-8h-gUE">
                                 <rect key="frame" x="143" y="361.66666666666669" width="89" height="89"/>
                                 <constraints>
@@ -39,6 +43,12 @@
                                     <constraint firstAttribute="width" constant="25" id="jpP-nm-HUS"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-4a-JaF">
+                                <rect key="frame" x="142" y="136" width="91" height="50"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="43"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -46,21 +56,99 @@
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9ZX-5m-hfM"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EVY-hw-hY5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u9V-W8-s3N" secondAttribute="trailing" constant="16" id="I91-TI-fqc"/>
+                            <constraint firstItem="6aB-JH-2TI" firstAttribute="bottom" secondItem="0fZ-8h-gUE" secondAttribute="bottom" id="Tou-WU-hLc"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Txf-2e-Hcj"/>
+                            <constraint firstItem="6aB-JH-2TI" firstAttribute="top" secondItem="0fZ-8h-gUE" secondAttribute="top" id="WVq-qj-L5B"/>
                             <constraint firstAttribute="bottom" secondItem="9cf-by-Hcf" secondAttribute="bottom" id="XiO-d7-1uc"/>
+                            <constraint firstItem="6aB-JH-2TI" firstAttribute="leading" secondItem="0fZ-8h-gUE" secondAttribute="leading" id="dH3-uS-gQS"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdK-ZA-END"/>
+                            <constraint firstItem="6aB-JH-2TI" firstAttribute="trailing" secondItem="0fZ-8h-gUE" secondAttribute="trailing" id="roO-o8-UuA"/>
                             <constraint firstItem="u9V-W8-s3N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="ucy-Dv-Q6T"/>
+                            <constraint firstItem="Ba4-4a-JaF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="vSr-Bk-899"/>
+                            <constraint firstItem="Ba4-4a-JaF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x8w-Ho-Bdn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mqw-R8-loU"/>
+                    <navigationItem key="navigationItem" id="Mqw-R8-loU">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="T1D-24-gDa">
+                            <connections>
+                                <segue destination="BdY-7F-xhq" kind="show" id="vTy-MP-TeP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="LoadingPlate" destination="6aB-JH-2TI" id="uJU-OY-pIy"/>
                         <outlet property="barAnimations" destination="u9V-W8-s3N" id="HCB-m7-Vi5"/>
+                        <outlet property="playButton" destination="0fZ-8h-gUE" id="1fC-x3-NUR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="983.20000000000005" y="20.689655172413794"/>
+        </scene>
+        <!--Jazz List View Controller-->
+        <scene sceneID="XNb-ar-h2b">
+            <objects>
+                <viewController storyboardIdentifier="JazzListViewController" id="BdY-7F-xhq" customClass="JazzListViewController" customModule="JazzRadio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Niq-78-c0T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FFF-nc-lo3">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" red="0.039215686274509803" green="0.0" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JazzListTableViewCell" rowHeight="60" id="L4y-sA-9Vj" customClass="JazzListTableViewCell" customModule="JazzRadio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L4y-sA-9Vj" id="fKg-XT-d1N">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Jazzmas Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-Bw-dNt">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="59.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="26"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.027450980392156862" green="0.0" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="PC8-Bw-dNt" firstAttribute="leading" secondItem="fKg-XT-d1N" secondAttribute="leading" constant="8" id="Dub-Zh-7PV"/>
+                                                <constraint firstItem="PC8-Bw-dNt" firstAttribute="top" secondItem="fKg-XT-d1N" secondAttribute="top" id="ozT-pd-Wqu"/>
+                                                <constraint firstAttribute="bottom" secondItem="PC8-Bw-dNt" secondAttribute="bottom" id="se2-EV-Rad"/>
+                                                <constraint firstAttribute="trailing" secondItem="PC8-Bw-dNt" secondAttribute="trailing" constant="8" id="wzP-6E-oCC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.039215686270000001" green="0.0" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="jazzLabel" destination="PC8-Bw-dNt" id="INg-5u-7XS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BdY-7F-xhq" id="Hz6-n4-YT0"/>
+                                    <outlet property="delegate" destination="BdY-7F-xhq" id="Uwi-v5-Hpp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.039215686270000001" green="0.0" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FFF-nc-lo3" firstAttribute="trailing" secondItem="i8P-Aa-bJR" secondAttribute="trailing" id="R4C-h1-xHp"/>
+                            <constraint firstItem="FFF-nc-lo3" firstAttribute="top" secondItem="i8P-Aa-bJR" secondAttribute="top" id="VZL-ld-Krj"/>
+                            <constraint firstItem="FFF-nc-lo3" firstAttribute="leading" secondItem="i8P-Aa-bJR" secondAttribute="leading" id="fRg-8w-sH2"/>
+                            <constraint firstItem="i8P-Aa-bJR" firstAttribute="bottom" secondItem="FFF-nc-lo3" secondAttribute="bottom" id="uVa-Bu-S9Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="i8P-Aa-bJR"/>
+                    </view>
+                    <connections>
+                        <outlet property="jazzTableView" destination="FFF-nc-lo3" id="11K-sk-bJA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdJ-O5-XvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="29.55665024630542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iRY-rP-PVd">

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DB215A7FE40077CC37 /* HomeFn.swift */; };
 		5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */; };
+		5A2920B4215D24E60071E024 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */; };
+		5A2920B8215D32280071E024 /* JazzListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2920B7215D32280071E024 /* JazzListViewController.swift */; };
+		5A2920BB215D37120071E024 /* JazzList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2920BA215D37120071E024 /* JazzList.plist */; };
+		5A2920BD215D38E20071E024 /* JazzListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2920BC215D38E20071E024 /* JazzListTableViewCell.swift */; };
 		6FD76030215A09D800B67378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD7602F215A09D800B67378 /* AppDelegate.swift */; };
 		6FD76032215A09D800B67378 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76031215A09D800B67378 /* HomeViewController.swift */; };
 		6FD76035215A09D800B67378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD76033215A09D800B67378 /* Main.storyboard */; };
@@ -17,6 +21,9 @@
 		6FD7603D215A0A1F00B67378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD7603B215A0A1F00B67378 /* LaunchScreen.storyboard */; };
 		6FD76048215A0A2200B67378 /* TheRadioAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76047215A0A2200B67378 /* TheRadioAppTests.swift */; };
 		6FD76053215A0A2200B67378 /* TheRadioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD76052215A0A2200B67378 /* TheRadioAppUITests.swift */; };
+		AA76E624A2BA01A24540378D /* Pods_JazzRadioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA22AF4119ED8C72E16BD44 /* Pods_JazzRadioUITests.framework */; };
+		B85641B1691F46B3021BCD47 /* Pods_JazzRadioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B99C922BDDB065F360B2D83 /* Pods_JazzRadioTests.framework */; };
+		C7CF227718271B0ADF1DC600 /* Pods_JazzRadio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2111D422BDA0B7AE7158DED /* Pods_JazzRadio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AA22AF4119ED8C72E16BD44 /* Pods_JazzRadioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JazzRadioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E7A8BDDF8B0F0588F23505C /* Pods-JazzRadioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadioUITests/Pods-JazzRadioUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A13A9DB215A7FE40077CC37 /* HomeFn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFn.swift; sourceTree = "<group>"; };
 		5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
+		5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A2920B7215D32280071E024 /* JazzListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzListViewController.swift; sourceTree = "<group>"; };
+		5A2920BA215D37120071E024 /* JazzList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = JazzList.plist; sourceTree = "<group>"; };
+		5A2920BC215D38E20071E024 /* JazzListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzListTableViewCell.swift; sourceTree = "<group>"; };
 		6FD7602C215A09D800B67378 /* JazzRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JazzRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD7602F215A09D800B67378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FD76031215A09D800B67378 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +66,13 @@
 		6FD7604E215A0A2200B67378 /* JazzRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JazzRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD76052215A0A2200B67378 /* TheRadioAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRadioAppUITests.swift; sourceTree = "<group>"; };
 		6FD76054215A0A2200B67378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B99C922BDDB065F360B2D83 /* Pods_JazzRadioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JazzRadioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		814B84BA47A2F24EC4289723 /* Pods-JazzRadio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadio/Pods-JazzRadio.debug.xcconfig"; sourceTree = "<group>"; };
+		9595D69CD53FB1810A1B27DC /* Pods-JazzRadioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadioTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadioTests/Pods-JazzRadioTests.release.xcconfig"; sourceTree = "<group>"; };
+		9C7777A2DB5676C835325CE8 /* Pods-JazzRadioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadioTests/Pods-JazzRadioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A32D8422FE682B9ED0E5D515 /* Pods-JazzRadioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadioUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadioUITests/Pods-JazzRadioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE86739F25C7E614FE675726 /* Pods-JazzRadio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadio.release.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadio/Pods-JazzRadio.release.xcconfig"; sourceTree = "<group>"; };
+		D2111D422BDA0B7AE7158DED /* Pods_JazzRadio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JazzRadio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2920B4215D24E60071E024 /* NVActivityIndicatorView.framework in Frameworks */,
+				C7CF227718271B0ADF1DC600 /* Pods_JazzRadio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85641B1691F46B3021BCD47 /* Pods_JazzRadioTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA76E624A2BA01A24540378D /* Pods_JazzRadioUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				6FD76031215A09D800B67378 /* HomeViewController.swift */,
+				5A2920BA215D37120071E024 /* JazzList.plist */,
+				5A2920B7215D32280071E024 /* JazzListViewController.swift */,
+				5A2920BC215D38E20071E024 /* JazzListTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,6 +146,8 @@
 				6FD76046215A0A2200B67378 /* TheRadioAppTests */,
 				6FD76051215A0A2200B67378 /* TheRadioAppUITests */,
 				6FD7602D215A09D800B67378 /* Products */,
+				7DEF729B284A5657FA2B74FB /* Pods */,
+				DBFA9786FCC622989E81B74D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +195,30 @@
 			path = TheRadioAppUITests;
 			sourceTree = "<group>";
 		};
+		7DEF729B284A5657FA2B74FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				814B84BA47A2F24EC4289723 /* Pods-JazzRadio.debug.xcconfig */,
+				CE86739F25C7E614FE675726 /* Pods-JazzRadio.release.xcconfig */,
+				9C7777A2DB5676C835325CE8 /* Pods-JazzRadioTests.debug.xcconfig */,
+				9595D69CD53FB1810A1B27DC /* Pods-JazzRadioTests.release.xcconfig */,
+				2E7A8BDDF8B0F0588F23505C /* Pods-JazzRadioUITests.debug.xcconfig */,
+				A32D8422FE682B9ED0E5D515 /* Pods-JazzRadioUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DBFA9786FCC622989E81B74D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */,
+				D2111D422BDA0B7AE7158DED /* Pods_JazzRadio.framework */,
+				7B99C922BDDB065F360B2D83 /* Pods_JazzRadioTests.framework */,
+				1AA22AF4119ED8C72E16BD44 /* Pods_JazzRadioUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FD76057215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadio" */;
 			buildPhases = (
+				0FCD59332D4F531152E2E282 /* [CP] Check Pods Manifest.lock */,
 				6FD76028215A09D800B67378 /* Sources */,
 				6FD76029215A09D800B67378 /* Frameworks */,
 				6FD7602A215A09D800B67378 /* Resources */,
+				B4467F2AD56C32BB5F48D0AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FD7605A215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioTests" */;
 			buildPhases = (
+				2F802DC95F41F44EA29E9D69 /* [CP] Check Pods Manifest.lock */,
 				6FD7603F215A0A2200B67378 /* Sources */,
 				6FD76040215A0A2200B67378 /* Frameworks */,
 				6FD76041215A0A2200B67378 /* Resources */,
@@ -208,6 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FD7605D215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioUITests" */;
 			buildPhases = (
+				A254C27F9E61D95E57B2BAEA /* [CP] Check Pods Manifest.lock */,
 				6FD7604A215A0A2200B67378 /* Sources */,
 				6FD7604B215A0A2200B67378 /* Frameworks */,
 				6FD7604C215A0A2200B67378 /* Resources */,
@@ -273,6 +330,7 @@
 				6FD7603D215A0A1F00B67378 /* LaunchScreen.storyboard in Resources */,
 				6FD7603A215A0A1F00B67378 /* Assets.xcassets in Resources */,
 				6FD76035215A09D800B67378 /* Main.storyboard in Resources */,
+				5A2920BB215D37120071E024 /* JazzList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,16 +350,93 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FCD59332D4F531152E2E282 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JazzRadio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F802DC95F41F44EA29E9D69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JazzRadioTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A254C27F9E61D95E57B2BAEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JazzRadioUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4467F2AD56C32BB5F48D0AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JazzRadio/Pods-JazzRadio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JazzRadio/Pods-JazzRadio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6FD76028215A09D800B67378 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */,
+				5A2920BD215D38E20071E024 /* JazzListTableViewCell.swift in Sources */,
 				5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */,
 				6FD76038215A09D900B67378 /* TheRadioApp.xcdatamodeld in Sources */,
 				6FD76032215A09D800B67378 /* HomeViewController.swift in Sources */,
 				6FD76030215A09D800B67378 /* AppDelegate.swift in Sources */,
+				5A2920B8215D32280071E024 /* JazzListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +609,7 @@
 		};
 		6FD76058215A0A2200B67378 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 814B84BA47A2F24EC4289723 /* Pods-JazzRadio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -492,6 +628,7 @@
 		};
 		6FD76059215A0A2200B67378 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE86739F25C7E614FE675726 /* Pods-JazzRadio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -510,6 +647,7 @@
 		};
 		6FD7605B215A0A2200B67378 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C7777A2DB5676C835325CE8 /* Pods-JazzRadioTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -531,6 +669,7 @@
 		};
 		6FD7605C215A0A2200B67378 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9595D69CD53FB1810A1B27DC /* Pods-JazzRadioTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -552,6 +691,7 @@
 		};
 		6FD7605E215A0A2200B67378 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E7A8BDDF8B0F0588F23505C /* Pods-JazzRadioUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -572,6 +712,7 @@
 		};
 		6FD7605F215A0A2200B67378 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A32D8422FE682B9ED0E5D515 /* Pods-JazzRadioUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
