@@ -79,6 +79,7 @@
                     <connections>
                         <outlet property="LoadingPlate" destination="6aB-JH-2TI" id="uJU-OY-pIy"/>
                         <outlet property="barAnimations" destination="u9V-W8-s3N" id="HCB-m7-Vi5"/>
+                        <outlet property="jazzTitle" destination="Ba4-4a-JaF" id="lHe-na-T5H"/>
                         <outlet property="playButton" destination="0fZ-8h-gUE" id="1fC-x3-NUR"/>
                     </connections>
                 </viewController>

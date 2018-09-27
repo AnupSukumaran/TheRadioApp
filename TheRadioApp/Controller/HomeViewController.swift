@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        jazzTitle.text = home.audioTitle
         home.createNowPlayingAnimation(imageData: barAnimations)
         home.delegate = self
         
