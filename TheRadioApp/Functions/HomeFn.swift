@@ -53,7 +53,10 @@ class HomeFn: NSObject {
     
     func prepareToPlay() {
         
-        let url = URL(string:"http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p")
+      //  let url = URL(string:"http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p")
+        
+        //http://philae.shoutca.st:8399/autodj
+        let url = URL(string:"http://185.80.220.101/1647_64")
         let asset = AVAsset(url: url!)
         
         let assetKeys = ["playable", "hasProtectedContent" ]

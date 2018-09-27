@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		5A13A9DB215A7FE40077CC37 /* HomeFn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFn.swift; sourceTree = "<group>"; };
 		5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
-		6FD7602C215A09D800B67378 /* TheRadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FD7602C215A09D800B67378 /* JazzRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JazzRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD7602F215A09D800B67378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FD76031215A09D800B67378 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6FD76034215A09D800B67378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,10 +47,10 @@
 		6FD76039215A0A1F00B67378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FD7603C215A0A1F00B67378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FD7603E215A0A1F00B67378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FD76043215A0A2200B67378 /* TheRadioAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheRadioAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FD76043215A0A2200B67378 /* JazzRadioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JazzRadioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD76047215A0A2200B67378 /* TheRadioAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRadioAppTests.swift; sourceTree = "<group>"; };
 		6FD76049215A0A2200B67378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FD7604E215A0A2200B67378 /* TheRadioAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheRadioAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FD7604E215A0A2200B67378 /* JazzRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JazzRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD76052215A0A2200B67378 /* TheRadioAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRadioAppUITests.swift; sourceTree = "<group>"; };
 		6FD76054215A0A2200B67378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,9 +125,9 @@
 		6FD7602D215A09D800B67378 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FD7602C215A09D800B67378 /* TheRadioApp.app */,
-				6FD76043215A0A2200B67378 /* TheRadioAppTests.xctest */,
-				6FD7604E215A0A2200B67378 /* TheRadioAppUITests.xctest */,
+				6FD7602C215A09D800B67378 /* JazzRadio.app */,
+				6FD76043215A0A2200B67378 /* JazzRadioTests.xctest */,
+				6FD7604E215A0A2200B67378 /* JazzRadioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FD7602B215A09D800B67378 /* TheRadioApp */ = {
+		6FD7602B215A09D800B67378 /* JazzRadio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FD76057215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioApp" */;
+			buildConfigurationList = 6FD76057215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadio" */;
 			buildPhases = (
 				6FD76028215A09D800B67378 /* Sources */,
 				6FD76029215A09D800B67378 /* Frameworks */,
@@ -181,14 +181,14 @@
 			);
 			dependencies = (
 			);
-			name = TheRadioApp;
+			name = JazzRadio;
 			productName = TheRadioApp;
-			productReference = 6FD7602C215A09D800B67378 /* TheRadioApp.app */;
+			productReference = 6FD7602C215A09D800B67378 /* JazzRadio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6FD76042215A0A2200B67378 /* TheRadioAppTests */ = {
+		6FD76042215A0A2200B67378 /* JazzRadioTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FD7605A215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioAppTests" */;
+			buildConfigurationList = 6FD7605A215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioTests" */;
 			buildPhases = (
 				6FD7603F215A0A2200B67378 /* Sources */,
 				6FD76040215A0A2200B67378 /* Frameworks */,
@@ -199,14 +199,14 @@
 			dependencies = (
 				6FD76045215A0A2200B67378 /* PBXTargetDependency */,
 			);
-			name = TheRadioAppTests;
+			name = JazzRadioTests;
 			productName = TheRadioAppTests;
-			productReference = 6FD76043215A0A2200B67378 /* TheRadioAppTests.xctest */;
+			productReference = 6FD76043215A0A2200B67378 /* JazzRadioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6FD7604D215A0A2200B67378 /* TheRadioAppUITests */ = {
+		6FD7604D215A0A2200B67378 /* JazzRadioUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FD7605D215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioAppUITests" */;
+			buildConfigurationList = 6FD7605D215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioUITests" */;
 			buildPhases = (
 				6FD7604A215A0A2200B67378 /* Sources */,
 				6FD7604B215A0A2200B67378 /* Frameworks */,
@@ -217,9 +217,9 @@
 			dependencies = (
 				6FD76050215A0A2200B67378 /* PBXTargetDependency */,
 			);
-			name = TheRadioAppUITests;
+			name = JazzRadioUITests;
 			productName = TheRadioAppUITests;
-			productReference = 6FD7604E215A0A2200B67378 /* TheRadioAppUITests.xctest */;
+			productReference = 6FD7604E215A0A2200B67378 /* JazzRadioUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -245,7 +245,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6FD76027215A09D700B67378 /* Build configuration list for PBXProject "TheRadioApp" */;
+			buildConfigurationList = 6FD76027215A09D700B67378 /* Build configuration list for PBXProject "JazzRadio" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -258,9 +258,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FD7602B215A09D800B67378 /* TheRadioApp */,
-				6FD76042215A0A2200B67378 /* TheRadioAppTests */,
-				6FD7604D215A0A2200B67378 /* TheRadioAppUITests */,
+				6FD7602B215A09D800B67378 /* JazzRadio */,
+				6FD76042215A0A2200B67378 /* JazzRadioTests */,
+				6FD7604D215A0A2200B67378 /* JazzRadioUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -326,12 +326,12 @@
 /* Begin PBXTargetDependency section */
 		6FD76045215A0A2200B67378 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FD7602B215A09D800B67378 /* TheRadioApp */;
+			target = 6FD7602B215A09D800B67378 /* JazzRadio */;
 			targetProxy = 6FD76044215A0A2200B67378 /* PBXContainerItemProxy */;
 		};
 		6FD76050215A0A2200B67378 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FD7602B215A09D800B67378 /* TheRadioApp */;
+			target = 6FD7602B215A09D800B67378 /* JazzRadio */;
 			targetProxy = 6FD7604F215A0A2200B67378 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -525,7 +525,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheRadioApp.app/TheRadioApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JazzRadio.app/JazzRadio";
 			};
 			name = Debug;
 		};
@@ -546,7 +546,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheRadioApp.app/TheRadioApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JazzRadio.app/JazzRadio";
 			};
 			name = Release;
 		};
@@ -593,7 +593,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6FD76027215A09D700B67378 /* Build configuration list for PBXProject "TheRadioApp" */ = {
+		6FD76027215A09D700B67378 /* Build configuration list for PBXProject "JazzRadio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FD76055215A0A2200B67378 /* Debug */,
@@ -602,7 +602,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FD76057215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioApp" */ = {
+		6FD76057215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FD76058215A0A2200B67378 /* Debug */,
@@ -611,7 +611,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FD7605A215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioAppTests" */ = {
+		6FD7605A215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FD7605B215A0A2200B67378 /* Debug */,
@@ -620,7 +620,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FD7605D215A0A2200B67378 /* Build configuration list for PBXNativeTarget "TheRadioAppUITests" */ = {
+		6FD7605D215A0A2200B67378 /* Build configuration list for PBXNativeTarget "JazzRadioUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FD7605E215A0A2200B67378 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TheRadioApp.xcodeproj">
+      location = "self:/Users/sas/Desktop/youDecideProj/TheRadioApp/JazzRadio.xcodeproj">
    </FileRef>
 </Workspace>
