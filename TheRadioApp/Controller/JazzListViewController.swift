@@ -54,7 +54,7 @@ extension JazzListViewController: UITableViewDelegate {
         print("url = \(jazzAudioUrl[indexPath.row])")
         HomeFn.shared.audioTitle = jazzName[indexPath.row]
         HomeFn.shared.audioUrl = jazzAudioUrl[indexPath.row]
-        HomeFn.shared.prepareToPlay()
+        HomeFn.shared.definingFromTable()
         navigationController?.popViewController(animated: true)
     }
 }

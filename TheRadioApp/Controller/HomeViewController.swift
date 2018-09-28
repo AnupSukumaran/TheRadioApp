@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var LoadingPlate: UIView!
     @IBOutlet weak var jazzTitle: UILabel!
     
+    
     let home = HomeFn.shared
     
     var activeIndic: NVActivityIndicatorView?
@@ -42,13 +43,15 @@ class HomeViewController: UIViewController {
     
     @IBAction func playAction(_ sender: UIButton) {
        sender.isSelected = !sender.isSelected
-       
+       print("called")
         if sender.isSelected{
+            print("buttonsisSelcted = \(sender.isSelected)")
             home.definingPlayer()
             home.player?.play()
          
            
         } else {
+              print("buttonsisSelcted = \(sender.isSelected)")
             home.player?.pause()
             barAnimations.stopAnimating()
         }
@@ -59,23 +62,47 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: FunctionRemainingActionDelegate {
-    func stopLoadingIndicator() {
-        self.playButton.isHidden = false
-        self.activeIndic?.stopAnimating()
+    
+    func startAnimation(state: Bool) {
+        if state {
+            barAnimations.startAnimating()
+        } else {
+            barAnimations.stopAnimating()
+        }
     }
     
-    
-    func startLoadingIndicator() {
-            self.playButton.isHidden = true
+    func startLoadingIndicator(state: Bool) {
+        self.playButton.isHidden = state
+        if playButton.isHidden {
             self.activeIndic?.startAnimating()
+        } else {
+             self.activeIndic?.stopAnimating()
+        }
     }
     
+    func changePlayButtonState(state: Bool) {
+        playButton.isSelected = !state
+        playAction(playButton)
+       //playAction(playButton)
+    }
+    
+//    func stopLoadingIndicator() {
+//        self.playButton.isHidden = false
+//        self.activeIndic?.stopAnimating()
+//    }
+//
+//
+//    func startLoadingIndicator() {
+//            self.playButton.isHidden = true
+//            self.activeIndic?.startAnimating()
+//    }
+//
     
   
-    func startAnimation() {
-        print("DelegateCalled")
-         barAnimations.startAnimating()
-    }
+//    func startAnimation() {
+//        print("DelegateCalled")
+//         barAnimations.startAnimating()
+//    }
     
    
     

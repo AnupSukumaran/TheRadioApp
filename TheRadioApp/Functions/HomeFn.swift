@@ -11,9 +11,10 @@ import UIKit
 import AVFoundation
 
 protocol FunctionRemainingActionDelegate: class {
-    func startAnimation()
-    func startLoadingIndicator()
-    func stopLoadingIndicator()
+    func startAnimation(state: Bool)
+    func startLoadingIndicator(state: Bool)
+   // func stopLoadingIndicator()
+    func changePlayButtonState(state: Bool)
    // func stopAnimation()
 }
 
@@ -22,22 +23,36 @@ class HomeFn: NSObject {
     static let shared = HomeFn()
     var audioTitle = "The Jazzmas Channel"
     var audioUrl = "http://185.80.220.101/1647_64"
-    
+    var tempAudioUrl = ""
     weak var delegate: FunctionRemainingActionDelegate?
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     
+    
 
+    func definingFromTable() {
+        if audioUrl == tempAudioUrl {
+            print("Not changed")
+          
+        } else {
+              tempAudioUrl = audioUrl
+            playerItem = nil
+             delegate?.startAnimation(state: false)
+            delegate?.changePlayButtonState(state: true)
+             print("urlChanging")
+        }
+    }
     
     func definingPlayer() {
         
+        tempAudioUrl = audioUrl
         if playerItem == nil {
-            delegate?.startLoadingIndicator()
+            delegate?.startLoadingIndicator(state: true)
             prepareToPlay()
             
         } else {
             print("PlayerItem is Not Nil")
-             delegate?.startAnimation()
+            delegate?.startAnimation(state: true)
         }
     }
     
@@ -91,7 +106,7 @@ class HomeFn: NSObject {
             case .readyToPlay:
                 print("ReadyToPlay")
               
-                    delegate?.startAnimation()
+                delegate?.startAnimation(state: true)
                 
 
             case .failed:
@@ -107,8 +122,8 @@ class HomeFn: NSObject {
         if keyPath == #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp) {
              print("bufferToPlay")
             
-            delegate?.startAnimation()
-            delegate?.stopLoadingIndicator()
+            delegate?.startAnimation(state: true)
+            delegate?.startLoadingIndicator(state: false)
         }
         
 
