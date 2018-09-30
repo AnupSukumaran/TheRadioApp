@@ -9,25 +9,85 @@
 import Foundation
 import UIKit
 import AVFoundation
+import NVActivityIndicatorView
+import MediaPlayer
 
 protocol FunctionRemainingActionDelegate: class {
-    func startAnimation(state: Bool)
-    func startLoadingIndicator(state: Bool)
-   // func stopLoadingIndicator()
+    func startAnimatingBars(state: Bool)
     func changePlayButtonState(state: Bool)
-   // func stopAnimation()
+    func hidePlayButton(state: Bool)
 }
 
 class HomeFn: NSObject {
     
     static let shared = HomeFn()
+    
+    weak var delegate: FunctionRemainingActionDelegate?
+    
     var audioTitle = "The Jazzmas Channel"
     var audioUrl = "http://185.80.220.101/1647_64"
     var tempAudioUrl = ""
-    weak var delegate: FunctionRemainingActionDelegate?
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
+    var activeIndic: NVActivityIndicatorView?
     
+    
+    
+    //MARK: Setup Remote Plaer
+    func setupRemoteCommandCenter() {
+        
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        commandCenter.playCommand.addTarget { event in
+            return .success
+        }
+        
+        commandCenter.pauseCommand.addTarget { event in
+            return .success
+        }
+    }
+    
+    //MARK: Adding Notifications for
+    func setupNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+    }
+    
+    @objc private func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+        
+        switch type {
+        case .began:
+            DispatchQueue.main.async {
+                print("Found1😃😄😁")
+                self.player?.pause()
+                self.delegate?.changePlayButtonState(state: false)
+//                self.playButton.isSelected = false
+//                self.NowPlayingAnimation.stopAnimating()
+                // self.pause()
+                
+            }
+        case .ended:
+            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { break }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            DispatchQueue.main.async {
+                print("Hello1234😁")
+                options.contains(.shouldResume) ? print("self.play()") : print("self.pause()") }
+        }
+    }
+    
+    
+    
+    //MARK: Adding NVActivityIndicatorView Loading View
+    func addLoadingIndic(view: UIView) {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        activeIndic = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), padding: 0.0)
+        view.addSubview(activeIndic!)
+    }
     
 
     func definingFromTable() {
@@ -37,7 +97,7 @@ class HomeFn: NSObject {
         } else {
               tempAudioUrl = audioUrl
             playerItem = nil
-             delegate?.startAnimation(state: false)
+             delegate?.startAnimatingBars(state: false)
             delegate?.changePlayButtonState(state: true)
              print("urlChanging")
         }
@@ -47,12 +107,13 @@ class HomeFn: NSObject {
         
         tempAudioUrl = audioUrl
         if playerItem == nil {
-            delegate?.startLoadingIndicator(state: true)
+            activeIndic?.startAnimating()
+            delegate?.hidePlayButton(state: true)
             prepareToPlay()
             
         } else {
             print("PlayerItem is Not Nil")
-            delegate?.startAnimation(state: true)
+            delegate?.startAnimatingBars(state: true)
         }
     }
     
@@ -81,12 +142,22 @@ class HomeFn: NSObject {
             pItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp), options: [.old, .new], context: nil)
             pItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.timedMetadata), options: [.old, .new], context: nil)
         }
-        
-        
-        
-        
-        // Associate the player item with the player
+
         player = AVPlayer(playerItem: playerItem)
+    }
+    
+    //MARK: Deallocating Observers
+    func deallocatedObservers() {
+        print("DELLOCdd")
+        if let item = playerItem {
+            print("DELLOC")
+            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
+            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
+            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp))
+            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.timedMetadata))
+        }
+        
+        
     }
     
     
@@ -106,7 +177,7 @@ class HomeFn: NSObject {
             case .readyToPlay:
                 print("ReadyToPlay")
               
-                delegate?.startAnimation(state: true)
+                delegate?.startAnimatingBars(state: true)
                 
 
             case .failed:
@@ -121,9 +192,9 @@ class HomeFn: NSObject {
         
         if keyPath == #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp) {
              print("bufferToPlay")
-            
-            delegate?.startAnimation(state: true)
-            delegate?.startLoadingIndicator(state: false)
+            delegate?.startAnimatingBars(state: true)
+            activeIndic?.stopAnimating()
+            delegate?.hidePlayButton(state: false)
         }
         
 
@@ -135,6 +206,35 @@ class HomeFn: NSObject {
     func createNowPlayingAnimation(imageData: UIImageView) {
         imageData.animationImages = AnimationFrames.createFrames()
         imageData.animationDuration = 0.7
+    }
+    
+    //MARK: Add Notifications for remote Player
+    func remotePlayerNotification() {
+        addNotificationToPlay()
+        addNotificationToPause()
+    }
+    
+    func addNotificationToPlay() {
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("playNEW"), object: nil, queue: nil) { (notification) in
+            
+            self.delegate?.changePlayButtonState(state: true)
+            self.delegate?.startAnimatingBars(state: true)
+            print("playIT")
+        }
+        
+    }
+    
+    func addNotificationToPause() {
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("pauseNEW"), object: nil, queue: nil) { (notification) in
+            
+            self.delegate?.changePlayButtonState(state: false)
+            self.delegate?.startAnimatingBars(state: false)
+            print("pauseIT")
+            
+        }
+        
     }
     
     

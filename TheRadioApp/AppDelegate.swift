@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        let session = AVAudioSession.sharedInstance()
+        do{
+            try session.setActive(true)
+            try session.setCategory(.playback, mode: .default, options: [.allowAirPlay])
+        } catch{
+            print(error.localizedDescription)
+        }
         return true
     }
 
@@ -28,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        //UIApplication.shared.beginReceivingRemoteControlEvents()
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers, .allowAirPlay])
+//            print("Playback OK")
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            print("Session is Active")
+//        } catch let error {
+//            print("Error = \(error.localizedDescription)")
+//        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -41,7 +58,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        UIApplication.shared.endReceivingRemoteControlEvents()
         self.saveContext()
+    }
+    
+    override func remoteControlReceived(with event: UIEvent?) {
+        super.remoteControlReceived(with: event)
+        
+        guard let event = event, event.type == UIEvent.EventType.remoteControl else {
+            
+            return
+        }
+        
+        switch event.subtype {
+        case .remoteControlPlay:
+            print("Playing")
+            NotificationCenter.default.post(name: NSNotification.Name("playNEW"), object: nil)
+        case .remoteControlPause:
+            print("Pause")
+            NotificationCenter.default.post(name: NSNotification.Name("pauseNEW"), object: nil)
+        case .remoteControlTogglePlayPause:
+            print("TogglePlayPause")
+        case .remoteControlNextTrack:
+            print("NextTrack")
+        case .remoteControlPreviousTrack:
+            print("Previous")
+        default:
+            break
+        }
+        
     }
 
     // MARK: - Core Data stack

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
+//import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
     
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     
     let home = HomeFn.shared
     
-    var activeIndic: NVActivityIndicatorView?
+   // var activeIndic: NVActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,14 @@ class HomeViewController: UIViewController {
         jazzTitle.text = home.audioTitle
         home.createNowPlayingAnimation(imageData: barAnimations)
         home.delegate = self
-        
-         let frame = CGRect(x: 0, y: 0, width: LoadingPlate.frame.width, height: LoadingPlate.frame.height)
-        
-        activeIndic = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), padding: 0.0)
-        
-        self.LoadingPlate.addSubview(activeIndic!)
-        
+        home.remotePlayerNotification()
+        home.addLoadingIndic(view: LoadingPlate)
+        home.setupRemoteCommandCenter()
+        home.setupNotifications()
     }
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
      //   jazzTitle.text = home.audioTitle
@@ -58,12 +58,17 @@ class HomeViewController: UIViewController {
         
     }
     
+    deinit {
+        home.deallocatedObservers()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 
 }
 
 extension HomeViewController: FunctionRemainingActionDelegate {
     
-    func startAnimation(state: Bool) {
+    func startAnimatingBars(state: Bool) {
         if state {
             barAnimations.startAnimating()
         } else {
@@ -71,40 +76,14 @@ extension HomeViewController: FunctionRemainingActionDelegate {
         }
     }
     
-    func startLoadingIndicator(state: Bool) {
-        self.playButton.isHidden = state
-        if playButton.isHidden {
-            self.activeIndic?.startAnimating()
-        } else {
-             self.activeIndic?.stopAnimating()
+
+        func hidePlayButton(state: Bool) {
+            self.playButton.isHidden = state
         }
-    }
     
     func changePlayButtonState(state: Bool) {
         playButton.isSelected = !state
         playAction(playButton)
-       //playAction(playButton)
     }
-    
-//    func stopLoadingIndicator() {
-//        self.playButton.isHidden = false
-//        self.activeIndic?.stopAnimating()
-//    }
-//
-//
-//    func startLoadingIndicator() {
-//            self.playButton.isHidden = true
-//            self.activeIndic?.startAnimating()
-//    }
-//
-    
-  
-//    func startAnimation() {
-//        print("DelegateCalled")
-//         barAnimations.startAnimating()
-//    }
-    
-   
-    
     
 }
