@@ -24,14 +24,16 @@ class HomeFn: NSObject {
     
     weak var delegate: FunctionRemainingActionDelegate?
     
+    static var jazzname = "jazzname"
+    static var jazzurl = "jazzurl"
     var audioTitle = "The Jazzmas Channel"
     var audioUrl = "http://185.80.220.101/1647_64"
     var tempAudioUrl = ""
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
     var activeIndic: NVActivityIndicatorView?
-    
-    
+    var isObserving = false
+    var isBufferingCompleted = false
     
     //MARK: Setup Remote Plaer
     func setupRemoteCommandCenter() {
@@ -64,8 +66,9 @@ class HomeFn: NSObject {
         case .began:
             DispatchQueue.main.async {
                 print("Found1😃😄😁")
-                self.player?.pause()
-                self.delegate?.changePlayButtonState(state: false)
+                
+//                self.player?.pause()
+//                self.delegate?.changePlayButtonState(state: false)
 //                self.playButton.isSelected = false
 //                self.NowPlayingAnimation.stopAnimating()
                 // self.pause()
@@ -91,29 +94,62 @@ class HomeFn: NSObject {
     
 
     func definingFromTable() {
-        if audioUrl == tempAudioUrl {
+        if tempAudioUrl == audioUrl {
             print("Not changed")
           
         } else {
-              tempAudioUrl = audioUrl
+            
+           // savedUrlsfunc()
+            tempAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String ?? audioUrl
             playerItem = nil
-             delegate?.startAnimatingBars(state: false)
+            activityIndicAndShowButton()
+            delegate?.startAnimatingBars(state: false)
             delegate?.changePlayButtonState(state: true)
-             print("urlChanging")
+            print("urlChanging")
         }
     }
     
+//    //MARK: Getting the saved URL if not the other url
+//    func savedUrlsfunc() {
+//        if let savedAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String {
+//            
+//            tempAudioUrl = savedAudioUrl
+//            playerItem = nil
+//            activityIndicAndShowButton()
+//            delegate?.startAnimatingBars(state: false)
+//            delegate?.changePlayButtonState(state: true)
+//            print("savedurlChanging")
+//            
+//        } else {
+//            tempAudioUrl = audioUrl
+//            playerItem = nil
+//            activityIndicAndShowButton()
+//            delegate?.startAnimatingBars(state: false)
+//            delegate?.changePlayButtonState(state: true)
+//            print("urlChanging")
+//            
+//        }
+//    }
+//    
     func definingPlayer() {
-        
-        tempAudioUrl = audioUrl
+        tempAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String ?? audioUrl
+      //  tempAudioUrl = audioUrl
         if playerItem == nil {
-            activeIndic?.startAnimating()
-            delegate?.hidePlayButton(state: true)
+             print("PlayerItem is Nil")
+            activityIndicAndHideButton()
             prepareToPlay()
             
         } else {
             print("PlayerItem is Not Nil")
-            delegate?.startAnimatingBars(state: true)
+           
+            if !isBufferingCompleted {
+                print("BufferingIsNotcompleted")
+                activityIndicAndHideButton()
+                delegate?.startAnimatingBars(state: false)
+            } else {
+                 delegate?.startAnimatingBars(state: true)
+            }
+            //activityIndicAndHideButton()
         }
     }
     
@@ -128,7 +164,7 @@ class HomeFn: NSObject {
         //http://bigrradio.cdnstream1.com/5127_128    - The Vocal Jazz Channel
         //http://listen.57fm.com/toj    - A Taste of Jazz
         //http://allzic40.ice.infomaniak.ch/allzic40.mp3    -  Allzic - Jazz
-        let url = URL(string: audioUrl)
+        let url = URL(string: tempAudioUrl)
         let asset = AVAsset(url: url!)
         
         let assetKeys = ["playable", "hasProtectedContent" ]
@@ -137,6 +173,7 @@ class HomeFn: NSObject {
                                   automaticallyLoadedAssetKeys: assetKeys)
         
         if let pItem =  playerItem {
+            print("Assigning Notifcations")
             pItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: nil)
             pItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty), options: [.old, .new], context: nil)
             pItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp), options: [.old, .new], context: nil)
@@ -144,6 +181,7 @@ class HomeFn: NSObject {
         }
 
         player = AVPlayer(playerItem: playerItem)
+        isObserving = true
     }
     
     //MARK: Deallocating Observers
@@ -151,10 +189,14 @@ class HomeFn: NSObject {
         print("DELLOCdd")
         if let item = playerItem {
             print("DELLOC")
-            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
-            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
-            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp))
-            item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.timedMetadata))
+            
+            if isObserving {
+                item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
+                item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
+                item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp))
+                item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.timedMetadata))
+            }
+            isObserving = false
         }
         
         
@@ -171,12 +213,13 @@ class HomeFn: NSObject {
                 status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
             } else {
                 status = .unknown
+                
             }
             
             switch status {
             case .readyToPlay:
                 print("ReadyToPlay")
-              
+                
                 delegate?.startAnimatingBars(state: true)
                 
 
@@ -191,16 +234,29 @@ class HomeFn: NSObject {
         }
         
         if keyPath == #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp) {
-             print("bufferToPlay")
+             print("KeyPath - isPlaybackLikelyToKeepUp")
             delegate?.startAnimatingBars(state: true)
-            activeIndic?.stopAnimating()
-            delegate?.hidePlayButton(state: false)
+            
+            isBufferingCompleted = true
+            
+            activityIndicAndShowButton()
         }
         
 
     }
     
+    func activityIndicAndHideButton() {
+        print("Activit Started")
+        activeIndic?.startAnimating()
+        delegate?.hidePlayButton(state: true)
+    }
     
+    func activityIndicAndShowButton() {
+        print("Activit Stopped")
+        
+        activeIndic?.stopAnimating()
+        delegate?.hidePlayButton(state: false)
+    }
     
     
     func createNowPlayingAnimation(imageData: UIImageView) {

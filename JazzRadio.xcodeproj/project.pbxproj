@@ -108,9 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				6FD76031215A09D800B67378 /* HomeViewController.swift */,
-				5A2920BA215D37120071E024 /* JazzList.plist */,
 				5A2920B7215D32280071E024 /* JazzListViewController.swift */,
 				5A2920BC215D38E20071E024 /* JazzListTableViewCell.swift */,
+				5A2920BA215D37120071E024 /* JazzList.plist */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

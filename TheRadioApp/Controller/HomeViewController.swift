@@ -23,12 +23,11 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        jazzTitle.text = home.audioTitle
-        home.createNowPlayingAnimation(imageData: barAnimations)
         home.delegate = self
-        home.remotePlayerNotification()
         home.addLoadingIndic(view: LoadingPlate)
+        home.createNowPlayingAnimation(imageData: barAnimations)
+        
+        home.remotePlayerNotification()
         home.setupRemoteCommandCenter()
         home.setupNotifications()
     }
@@ -37,8 +36,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-     //   jazzTitle.text = home.audioTitle
+        
+//        guard let audioName = UserDefaults.standard.value(forKey: HomeFn.jazzname) as? String else {jazzTitle.text = home.audioTitle;print("audioName😩");return}
+        jazzTitle.text = UserDefaults.standard.value(forKey: HomeFn.jazzname) as? String ?? home.audioTitle
+    
+        
     }
+    
+    
+    
+    
     
     
     @IBAction func playAction(_ sender: UIButton) {
@@ -48,7 +55,7 @@ class HomeViewController: UIViewController {
             print("buttonsisSelcted = \(sender.isSelected)")
             home.definingPlayer()
             home.player?.play()
-         
+            
            
         } else {
               print("buttonsisSelcted = \(sender.isSelected)")
@@ -59,6 +66,7 @@ class HomeViewController: UIViewController {
     }
     
     deinit {
+        print("Deinit")
         home.deallocatedObservers()
         NotificationCenter.default.removeObserver(self)
     }
@@ -69,16 +77,25 @@ class HomeViewController: UIViewController {
 extension HomeViewController: FunctionRemainingActionDelegate {
     
     func startAnimatingBars(state: Bool) {
-        if state {
+        if state, playButton.isSelected {
             barAnimations.startAnimating()
+            print("StartedBarAnimating")
         } else {
             barAnimations.stopAnimating()
+            print("StoppedBarAnimating")
         }
     }
     
 
         func hidePlayButton(state: Bool) {
             self.playButton.isHidden = state
+//            if state {
+//                
+//            } else {
+//                print("ActivityStopped ")
+//              //  home.activeIndic?.stopAnimating()
+//            }
+            
         }
     
     func changePlayButtonState(state: Bool) {

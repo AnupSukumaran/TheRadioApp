@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--JAZZ RADIO-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="JazzRadio" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,8 +27,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fZ-8h-gUE">
                                 <rect key="frame" x="143" y="361.66666666666669" width="89" height="89"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="89" id="Wgx-3o-izC"/>
-                                    <constraint firstAttribute="height" constant="89" id="zXY-p1-Rep"/>
+                                    <constraint firstAttribute="width" constant="89" id="Wgx-3o-izC">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="89" id="zXY-p1-Rep">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" image="play"/>
                                 <state key="selected" image="pause"/>
@@ -43,8 +47,8 @@
                                     <constraint firstAttribute="width" constant="25" id="jpP-nm-HUS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-4a-JaF">
-                                <rect key="frame" x="142" y="136" width="91" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-4a-JaF">
+                                <rect key="frame" x="8" y="143" width="359" height="50"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="43"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -54,26 +58,47 @@
                         <constraints>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="08Q-RX-tM8"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9ZX-5m-hfM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ba4-4a-JaF" secondAttribute="trailing" constant="8" id="DVw-ww-Ep0"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EVY-hw-hY5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u9V-W8-s3N" secondAttribute="trailing" constant="16" id="I91-TI-fqc"/>
+                            <constraint firstItem="Ba4-4a-JaF" firstAttribute="top" secondItem="u9V-W8-s3N" secondAttribute="bottom" constant="8" id="IyQ-CD-48i"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="bottom" secondItem="0fZ-8h-gUE" secondAttribute="bottom" id="Tou-WU-hLc"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Txf-2e-Hcj"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="top" secondItem="0fZ-8h-gUE" secondAttribute="top" id="WVq-qj-L5B"/>
                             <constraint firstAttribute="bottom" secondItem="9cf-by-Hcf" secondAttribute="bottom" id="XiO-d7-1uc"/>
+                            <constraint firstItem="Ba4-4a-JaF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="YYU-zh-ktf"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="leading" secondItem="0fZ-8h-gUE" secondAttribute="leading" id="dH3-uS-gQS"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdK-ZA-END"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="trailing" secondItem="0fZ-8h-gUE" secondAttribute="trailing" id="roO-o8-UuA"/>
                             <constraint firstItem="u9V-W8-s3N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="ucy-Dv-Q6T"/>
-                            <constraint firstItem="Ba4-4a-JaF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="vSr-Bk-899"/>
                             <constraint firstItem="Ba4-4a-JaF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x8w-Ho-Bdn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mqw-R8-loU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="T1D-24-gDa">
-                            <connections>
-                                <segue destination="BdY-7F-xhq" kind="show" id="vTy-MP-TeP"/>
-                            </connections>
+                    <navigationItem key="navigationItem" title="JAZZ RADIO" id="Mqw-R8-loU">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="0hd-7U-V1J">
+                            <view key="customView" contentMode="scaleToFill" id="nvS-46-L6X">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOH-1Q-on3">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <state key="normal" image="Menu2"/>
+                                        <connections>
+                                            <segue destination="BdY-7F-xhq" kind="show" id="Mpt-uR-vPc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cOH-1Q-on3" firstAttribute="top" secondItem="nvS-46-L6X" secondAttribute="top" id="24J-u1-99Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="cOH-1Q-on3" secondAttribute="trailing" id="Hbd-Y5-RSv"/>
+                                    <constraint firstAttribute="bottom" secondItem="cOH-1Q-on3" secondAttribute="bottom" id="S8d-CX-ZSF"/>
+                                    <constraint firstAttribute="width" constant="30" id="dpx-0i-vFx"/>
+                                    <constraint firstItem="cOH-1Q-on3" firstAttribute="leading" secondItem="nvS-46-L6X" secondAttribute="leading" id="hfM-iZ-POT"/>
+                                    <constraint firstAttribute="height" constant="30" id="png-Ps-Ajz"/>
+                                </constraints>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -108,10 +133,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Jazzmas Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-Bw-dNt">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="59.666666666666664"/>
+                                                    <rect key="frame" x="8" y="0.0" width="1008" height="59.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="26"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="40"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.027450980392156862" green="0.0" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdJ-O5-XvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="29.55665024630542"/>
+            <point key="canvasLocation" x="1796" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iRY-rP-PVd">
@@ -159,6 +187,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JP0-rH-xZs">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -171,9 +204,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Menu2" width="48" height="48"/>
         <image name="NowPlayingBars" width="19" height="19"/>
         <image name="backgroung" width="720" height="1280"/>
         <image name="pause" width="178" height="178"/>
         <image name="play" width="178" height="178"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
