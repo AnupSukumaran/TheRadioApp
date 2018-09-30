@@ -68,7 +68,7 @@ class HomeFn: NSObject {
             DispatchQueue.main.async {
                 print("Found1😃😄😁")
                 
-//                self.player?.pause()
+//              self.player?.pause()
 //                self.delegate?.changePlayButtonState(state: false)
 //                self.playButton.isSelected = false
 //                self.NowPlayingAnimation.stopAnimating()
@@ -251,9 +251,10 @@ class HomeFn: NSObject {
     func addNotificationToPlay() {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("playNEW"), object: nil, queue: nil) { (notification) in
-            
+            self.activityIndicAndShowButton()
             self.delegate?.changePlayButtonState(state: true)
             self.delegate?.startAnimatingBars(state: true)
+            self.isBufferingCompleted = true
             print("playIT")
         }
         
@@ -265,6 +266,7 @@ class HomeFn: NSObject {
             
             self.delegate?.changePlayButtonState(state: false)
             self.delegate?.startAnimatingBars(state: false)
+            self.isBufferingCompleted = true
             print("pauseIT")
             
         }

@@ -27,7 +27,7 @@ class InterCheck {
         if reachability?.connection == nil {
             AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: selfVC)
         } else {
-            print("Yay! Internet Connection")
+            
             completionBlk?()
         }
        
@@ -65,7 +65,7 @@ class InterCheck {
                 
             } else {
                 completion(.noInternet)
-                print("Network not reachable")
+                
                 AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: view)
             }
             

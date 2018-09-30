@@ -142,6 +142,8 @@
 		5A13A9DA215A7F710077CC37 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				5A19290D21611F4C00E8BD8F /* InternetConnectiviy.swift */,
+				5A19290F216121FE00E8BD8F /* AlertClass.swift */,
 				5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */,
 				5A13A9DB215A7FE40077CC37 /* HomeFn.swift */,
 			);
@@ -174,8 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				6FD7602F215A09D800B67378 /* AppDelegate.swift */,
-				5A19290D21611F4C00E8BD8F /* InternetConnectiviy.swift */,
-				5A19290F216121FE00E8BD8F /* AlertClass.swift */,
 				5A13A9DA215A7F710077CC37 /* Functions */,
 				5A13A9D9215A7F670077CC37 /* Model */,
 				5A13A9D8215A7F620077CC37 /* View */,

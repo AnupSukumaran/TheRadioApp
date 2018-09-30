@@ -46,17 +46,16 @@ class HomeViewController: UIViewController {
                     print("Has Internet")
                     if !self.playButton.isSelected{
                         self.playButton.isSelected = false
-                        self.home.activeIndic?.startAnimating()
                         self.home.activityIndicAndShowButton()
                    }
             case .noInternet:
+                    print("Has No Internet")
                     self.noNetworkLB.isHidden = false
                     self.home.activityIndicAndHideButton()
                     self.home.player?.pause()
                     self.barAnimations.stopAnimating()
-                    self.home.activeIndic?.startAnimating()
                     self.home.playerItem = nil
-                 self.playButton.isSelected = false
+                    self.playButton.isSelected = false
             }
         }
     }
@@ -65,7 +64,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        guard let audioName = UserDefaults.standard.value(forKey: HomeFn.jazzname) as? String else {jazzTitle.text = home.audioTitle;print("audioName😩");return}
+
         jazzTitle.text = UserDefaults.standard.value(forKey: HomeFn.jazzname) as? String ?? home.audioTitle
     
         
@@ -76,8 +75,7 @@ class HomeViewController: UIViewController {
   
     
     @IBAction func playAction(_ sender: UIButton) {
-     //    InterCheck.shared.checkConnectivity(selfVC: self)
-        InterCheck.shared.checkConnectivity(selfVC: self)
+   
         sender.isSelected = !sender.isSelected
         print("called")
         if sender.isSelected{
@@ -123,8 +121,7 @@ extension HomeViewController: FunctionRemainingActionDelegate {
 
         func hidePlayButton(state: Bool) {
             self.playButton.isHidden = state
-
-            
+   
         }
     
     func changePlayButtonState(state: Bool) {
