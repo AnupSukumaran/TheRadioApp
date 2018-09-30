@@ -155,15 +155,7 @@ class HomeFn: NSObject {
     
     func prepareToPlay() {
         
-      //  let url = URL(string:"http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p")
-        
-        //http://185.80.220.101/1647_64 -  The Jazzmas Channel
-        //http://listen.011fm.com/stream27   - Holiday Jazz
-        //http://192.232.192.96:9978/stream    - Jazz Blues Soul
-        //http://185.80.220.101/1radio_smoothjazz_128    - The Wave Smooth Jazz
-        //http://bigrradio.cdnstream1.com/5127_128    - The Vocal Jazz Channel
-        //http://listen.57fm.com/toj    - A Taste of Jazz
-        //http://allzic40.ice.infomaniak.ch/allzic40.mp3    -  Allzic - Jazz
+      
         let url = URL(string: tempAudioUrl)
         let asset = AVAsset(url: url!)
         
