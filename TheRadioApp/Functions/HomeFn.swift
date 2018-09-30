@@ -16,6 +16,7 @@ protocol FunctionRemainingActionDelegate: class {
     func startAnimatingBars(state: Bool)
     func changePlayButtonState(state: Bool)
     func hidePlayButton(state: Bool)
+    func callAlertView(title: String, message: String, buttonTitle: String)
 }
 
 class HomeFn: NSObject {
@@ -109,28 +110,7 @@ class HomeFn: NSObject {
         }
     }
     
-//    //MARK: Getting the saved URL if not the other url
-//    func savedUrlsfunc() {
-//        if let savedAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String {
-//            
-//            tempAudioUrl = savedAudioUrl
-//            playerItem = nil
-//            activityIndicAndShowButton()
-//            delegate?.startAnimatingBars(state: false)
-//            delegate?.changePlayButtonState(state: true)
-//            print("savedurlChanging")
-//            
-//        } else {
-//            tempAudioUrl = audioUrl
-//            playerItem = nil
-//            activityIndicAndShowButton()
-//            delegate?.startAnimatingBars(state: false)
-//            delegate?.changePlayButtonState(state: true)
-//            print("urlChanging")
-//            
-//        }
-//    }
-//    
+
     func definingPlayer() {
         tempAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String ?? audioUrl
       //  tempAudioUrl = audioUrl
@@ -147,17 +127,22 @@ class HomeFn: NSObject {
                 activityIndicAndHideButton()
                 delegate?.startAnimatingBars(state: false)
             } else {
+                print("BufferingIscompleted")
                  delegate?.startAnimatingBars(state: true)
             }
-            //activityIndicAndHideButton()
+           
         }
     }
     
     func prepareToPlay() {
         
       
-        let url = URL(string: tempAudioUrl)
-        let asset = AVAsset(url: url!)
+        guard let url = URL(string: tempAudioUrl) else {
+            delegate?.callAlertView(title: "Station Not Available!!", message: "Please try another station", buttonTitle: "OK")
+            return
+        }
+        
+        let asset = AVAsset(url: url)
         
         let assetKeys = ["playable", "hasProtectedContent" ]
      
@@ -203,9 +188,10 @@ class HomeFn: NSObject {
             
             if let statusNumber = change?[.newKey] as? NSNumber {
                 status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
+                print("Status Unknown2")
             } else {
                 status = .unknown
-                
+                print("Status Unknown")
             }
             
             switch status {

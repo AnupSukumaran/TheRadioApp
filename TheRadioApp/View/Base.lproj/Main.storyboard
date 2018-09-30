@@ -53,12 +53,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zQo-03-vIZ">
+                                <rect key="frame" x="129" y="467" width="117.33333333333331" height="25.333333333333314"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="08Q-RX-tM8"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9ZX-5m-hfM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ba4-4a-JaF" secondAttribute="trailing" constant="8" id="DVw-ww-Ep0"/>
+                            <constraint firstItem="zQo-03-vIZ" firstAttribute="top" secondItem="6aB-JH-2TI" secondAttribute="bottom" constant="16.333333333333314" id="DrM-yf-1lf"/>
                             <constraint firstItem="9cf-by-Hcf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EVY-hw-hY5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u9V-W8-s3N" secondAttribute="trailing" constant="16" id="I91-TI-fqc"/>
                             <constraint firstItem="Ba4-4a-JaF" firstAttribute="top" secondItem="u9V-W8-s3N" secondAttribute="bottom" constant="8" id="IyQ-CD-48i"/>
@@ -68,6 +75,7 @@
                             <constraint firstAttribute="bottom" secondItem="9cf-by-Hcf" secondAttribute="bottom" id="XiO-d7-1uc"/>
                             <constraint firstItem="Ba4-4a-JaF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="YYU-zh-ktf"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="leading" secondItem="0fZ-8h-gUE" secondAttribute="leading" id="dH3-uS-gQS"/>
+                            <constraint firstItem="zQo-03-vIZ" firstAttribute="centerX" secondItem="6aB-JH-2TI" secondAttribute="centerX" id="ewP-BJ-htq"/>
                             <constraint firstItem="0fZ-8h-gUE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdK-ZA-END"/>
                             <constraint firstItem="6aB-JH-2TI" firstAttribute="trailing" secondItem="0fZ-8h-gUE" secondAttribute="trailing" id="roO-o8-UuA"/>
                             <constraint firstItem="u9V-W8-s3N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="ucy-Dv-Q6T"/>
@@ -105,6 +113,7 @@
                         <outlet property="LoadingPlate" destination="6aB-JH-2TI" id="uJU-OY-pIy"/>
                         <outlet property="barAnimations" destination="u9V-W8-s3N" id="HCB-m7-Vi5"/>
                         <outlet property="jazzTitle" destination="Ba4-4a-JaF" id="lHe-na-T5H"/>
+                        <outlet property="noNetworkLB" destination="zQo-03-vIZ" id="yfZ-cW-IsP"/>
                         <outlet property="playButton" destination="0fZ-8h-gUE" id="1fC-x3-NUR"/>
                     </connections>
                 </viewController>
@@ -133,7 +142,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Jazzmas Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-Bw-dNt">
-                                                    <rect key="frame" x="8" y="0.0" width="1008" height="59.666666666666664"/>
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="59.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="26"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>

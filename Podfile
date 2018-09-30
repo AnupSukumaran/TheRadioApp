@@ -7,6 +7,7 @@ target 'JazzRadio' do
 
   # Pods for JazzRadio
 	pod 'NVActivityIndicatorView'
+	pod 'ReachabilitySwift'
 
   target 'JazzRadioTests' do
     inherit! :search_paths

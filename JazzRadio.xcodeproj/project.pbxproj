@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DB215A7FE40077CC37 /* HomeFn.swift */; };
 		5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */; };
+		5A19290E21611F4C00E8BD8F /* InternetConnectiviy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A19290D21611F4C00E8BD8F /* InternetConnectiviy.swift */; };
+		5A192910216121FE00E8BD8F /* AlertClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A19290F216121FE00E8BD8F /* AlertClass.swift */; };
+		5A1929142161310100E8BD8F /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1929132161310100E8BD8F /* Reachability.framework */; };
 		5A2920B4215D24E60071E024 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */; };
 		5A2920B8215D32280071E024 /* JazzListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2920B7215D32280071E024 /* JazzListViewController.swift */; };
 		5A2920BB215D37120071E024 /* JazzList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2920BA215D37120071E024 /* JazzList.plist */; };
@@ -48,6 +51,11 @@
 		2E7A8BDDF8B0F0588F23505C /* Pods-JazzRadioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazzRadioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JazzRadioUITests/Pods-JazzRadioUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A13A9DB215A7FE40077CC37 /* HomeFn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFn.swift; sourceTree = "<group>"; };
 		5A13A9DD215A92C10077CC37 /* AnimationFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFrames.swift; sourceTree = "<group>"; };
+		5A19290B21611EF200E8BD8F /* ReachabilityLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReachabilityLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A19290D21611F4C00E8BD8F /* InternetConnectiviy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectiviy.swift; sourceTree = "<group>"; };
+		5A19290F216121FE00E8BD8F /* AlertClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertClass.swift; sourceTree = "<group>"; };
+		5A19291121612B7500E8BD8F /* NotificationBannerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotificationBannerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1929132161310100E8BD8F /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2920B7215D32280071E024 /* JazzListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzListViewController.swift; sourceTree = "<group>"; };
 		5A2920BA215D37120071E024 /* JazzList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = JazzList.plist; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A1929142161310100E8BD8F /* Reachability.framework in Frameworks */,
 				5A2920B4215D24E60071E024 /* NVActivityIndicatorView.framework in Frameworks */,
 				C7CF227718271B0ADF1DC600 /* Pods_JazzRadio.framework in Frameworks */,
 			);
@@ -165,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				6FD7602F215A09D800B67378 /* AppDelegate.swift */,
+				5A19290D21611F4C00E8BD8F /* InternetConnectiviy.swift */,
+				5A19290F216121FE00E8BD8F /* AlertClass.swift */,
 				5A13A9DA215A7F710077CC37 /* Functions */,
 				5A13A9D9215A7F670077CC37 /* Model */,
 				5A13A9D8215A7F620077CC37 /* View */,
@@ -211,6 +222,9 @@
 		DBFA9786FCC622989E81B74D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A1929132161310100E8BD8F /* Reachability.framework */,
+				5A19291121612B7500E8BD8F /* NotificationBannerSwift.framework */,
+				5A19290B21611EF200E8BD8F /* ReachabilityLib.framework */,
 				5A2920B3215D24E60071E024 /* NVActivityIndicatorView.framework */,
 				D2111D422BDA0B7AE7158DED /* Pods_JazzRadio.framework */,
 				7B99C922BDDB065F360B2D83 /* Pods_JazzRadioTests.framework */,
@@ -418,10 +432,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JazzRadio/Pods-JazzRadio-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -435,12 +451,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A19290E21611F4C00E8BD8F /* InternetConnectiviy.swift in Sources */,
 				5A13A9DE215A92C20077CC37 /* AnimationFrames.swift in Sources */,
 				5A2920BD215D38E20071E024 /* JazzListTableViewCell.swift in Sources */,
 				5A13A9DC215A7FE40077CC37 /* HomeFn.swift in Sources */,
 				6FD76038215A09D900B67378 /* TheRadioApp.xcdatamodeld in Sources */,
 				6FD76032215A09D800B67378 /* HomeViewController.swift in Sources */,
 				6FD76030215A09D800B67378 /* AppDelegate.swift in Sources */,
+				5A192910216121FE00E8BD8F /* AlertClass.swift in Sources */,
 				5A2920B8215D32280071E024 /* JazzListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

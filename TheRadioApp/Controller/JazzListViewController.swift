@@ -24,14 +24,12 @@ class JazzListViewController: UIViewController {
         
         jazzName = dict!.object(forKey: "jazzName") as! [String]
         jazzAudioUrl = dict!.object(forKey: "jazzAudioUrl") as! [String]
-        
-
-       print("firstKey = \(jazzName[0]), first value = \(jazzAudioUrl[0]) ")
-        
-        
-            // 2. check the idiom
-        
-        
+  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     //    InterCheck.shared.checkConnectivity(selfVC: self) 
     }
 
 }

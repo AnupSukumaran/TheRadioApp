@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 //import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
@@ -15,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var LoadingPlate: UIView!
     @IBOutlet weak var jazzTitle: UILabel!
+    @IBOutlet weak var noNetworkLB: UILabel!
     
     
     let home = HomeFn.shared
@@ -23,6 +25,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       // InterCheck.shared.checkConnectivity(selfVC: self)
         home.delegate = self
         home.addLoadingIndic(view: LoadingPlate)
         home.createNowPlayingAnimation(imageData: barAnimations)
@@ -32,6 +36,30 @@ class HomeViewController: UIViewController {
         home.setupNotifications()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
+        InterCheck.shared.networkNotifc(view: self) { (state) in
+            switch state {
+            case .hasInternet:
+                    self.noNetworkLB.isHidden = true
+                    print("Has Internet")
+                    if !self.playButton.isSelected{
+                        self.playButton.isSelected = false
+                        self.home.activeIndic?.startAnimating()
+                        self.home.activityIndicAndShowButton()
+                   }
+            case .noInternet:
+                    self.noNetworkLB.isHidden = false
+                    self.home.activityIndicAndHideButton()
+                    self.home.player?.pause()
+                    self.barAnimations.stopAnimating()
+                    self.home.activeIndic?.startAnimating()
+                    self.home.playerItem = nil
+                 self.playButton.isSelected = false
+            }
+        }
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,29 +73,31 @@ class HomeViewController: UIViewController {
     
     
     
-    
-    
+  
     
     @IBAction func playAction(_ sender: UIButton) {
-       sender.isSelected = !sender.isSelected
-       print("called")
+     //    InterCheck.shared.checkConnectivity(selfVC: self)
+        InterCheck.shared.checkConnectivity(selfVC: self)
+        sender.isSelected = !sender.isSelected
+        print("called")
         if sender.isSelected{
             print("buttonsisSelcted = \(sender.isSelected)")
-            home.definingPlayer()
-            home.player?.play()
+            self.home.definingPlayer()
+            self.home.player?.play()
             
-           
+            
         } else {
-              print("buttonsisSelcted = \(sender.isSelected)")
-            home.player?.pause()
-            barAnimations.stopAnimating()
+            print("buttonsisSelcted = \(sender.isSelected)")
+            self.home.player?.pause()
+            self.barAnimations.stopAnimating()
         }
-        
+      
     }
     
     deinit {
         print("Deinit")
         home.deallocatedObservers()
+        InterCheck.shared.removeNetworkObserver(view: self)
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -75,6 +105,10 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: FunctionRemainingActionDelegate {
+    func callAlertView(title: String, message: String, buttonTitle: String) {
+        AlertView.showAlert(title: title, message: message, buttonTitle: buttonTitle, selfClass: self)
+    }
+    
     
     func startAnimatingBars(state: Bool) {
         if state, playButton.isSelected {
@@ -89,12 +123,7 @@ extension HomeViewController: FunctionRemainingActionDelegate {
 
         func hidePlayButton(state: Bool) {
             self.playButton.isHidden = state
-//            if state {
-//                
-//            } else {
-//                print("ActivityStopped ")
-//              //  home.activeIndic?.stopAnimating()
-//            }
+
             
         }
     
