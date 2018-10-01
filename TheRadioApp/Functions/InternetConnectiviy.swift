@@ -30,20 +30,6 @@ class InterCheck {
             
             completionBlk?()
         }
-       
-        
-//        guard reachability.isInternetAvailable() else {
-//            AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: selfVC)
-//            return
-//
-//        }
-
-//        DispatchQueue.main.async {
-//            AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: selfVC)
-//           // CommonFunc.shared.removeNoDataSubView(selfVC: selfVC)
-//        }
-//
-       
 
     }
 
@@ -70,29 +56,14 @@ class InterCheck {
             }
             
         }
-//        NotificationCenter.default.addObserver(view, selector: #selector(reachabilityChanged),name: Notification.Name.reachabilityChanged,object: reachability)
+
         do{
             try reachability!.startNotifier()
         }catch{
             print("could not start reachability notifier")
         }
     }
-    
-//    @objc func reachabilityChanged(note: NSNotification, view: UIViewController) {
-//        
-//        let reachability = note.object as! Reachability
-//        
-//        if reachability.connection != .none {
-//            if reachability.connection == .wifi {
-//                print("Reachable via WiFi")
-//            } else {
-//                print("Reachable via Cellular")
-//            }
-//        } else {
-//            print("Network not reachable")
-//           AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: view)
-//        }
-//    }
+
     
     func removeNetworkObserver(view: UIViewController) {
         reachability?.stopNotifier()

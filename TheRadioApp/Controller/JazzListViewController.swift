@@ -69,15 +69,20 @@ extension JazzListViewController: UITableViewDataSource {
 extension JazzListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("url = \(jazzAudioUrl[indexPath.row])")
+        HomeFn.shared.clearDataInCore()
         HomeFn.shared.audioTitle = jazzName[indexPath.row]
         let jazzN = jazzName[indexPath.row]
-        UserDefaults.standard.set(jazzN, forKey: HomeFn.jazzname)
         HomeFn.shared.audioUrl = jazzAudioUrl[indexPath.row]
         let jazzurl = jazzAudioUrl[indexPath.row]
-        UserDefaults.standard.set(jazzurl, forKey: HomeFn.jazzurl)
         
-        HomeFn.shared.definingFromTable()
+        guard URL(string: jazzurl) != nil else {
+            AlertView.showAlert(title: "Something is wrong with the stations", message: "Please try another stations", buttonTitle: "OK", selfClass: self)
+            return
+            
+        }
+       
+        HomeFn.shared.saveJazzDataToCore(jazzTitle: jazzN, jazzAudioUrl: jazzurl)
+        
         navigationController?.popViewController(animated: true)
     }
 }

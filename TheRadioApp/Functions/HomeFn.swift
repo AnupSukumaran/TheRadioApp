@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import AVFoundation
 import NVActivityIndicatorView
-import MediaPlayer
+
+import CoreData
 
 protocol FunctionRemainingActionDelegate: class {
     func startAnimatingBars(state: Bool)
@@ -22,13 +23,16 @@ protocol FunctionRemainingActionDelegate: class {
 class HomeFn: NSObject {
     
     static let shared = HomeFn()
+    var dataController: DataController!
     
     weak var delegate: FunctionRemainingActionDelegate?
     
     static var jazzname = "jazzname"
     static var jazzurl = "jazzurl"
+    
     var audioTitle = "The Jazzmas Channel"
     var audioUrl = "http://185.80.220.101/1647_64"
+    
     var tempAudioUrl = ""
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
@@ -36,72 +40,68 @@ class HomeFn: NSObject {
     var isObserving = false
     var isBufferingCompleted = false
     
-    //MARK: Setup Remote Plaer
-    func setupRemoteCommandCenter() {
+    var jazzModel:JazzModel?
+    
+    func saveJazzDataToCore(jazzTitle: String, jazzAudioUrl: String) {
         
-        let commandCenter = MPRemoteCommandCenter.shared()
-        
-        commandCenter.playCommand.addTarget { event in
-            return .success
-        }
-        
-        commandCenter.pauseCommand.addTarget { event in
-            return .success
-        }
+        let jazzModel = JazzModel(context: dataController.viewContext)
+        print("jazzTitle = \(jazzTitle)")
+        jazzModel.jazzTitle = jazzTitle
+        jazzModel.jazzAudioUrl = jazzAudioUrl
+        saved()
     }
     
-    //MARK: Adding Notifications for
-    func setupNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
-    }
     
-    @objc private func handleInterruption(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
-                return
-        }
-        
-        switch type {
-        case .began:
-            DispatchQueue.main.async {
-                print("Found1😃😄😁")
-                
-//              self.player?.pause()
-//                self.delegate?.changePlayButtonState(state: false)
-//                self.playButton.isSelected = false
-//                self.NowPlayingAnimation.stopAnimating()
-                // self.pause()
-                
+    func saved() {
+        if dataController.viewContext.hasChanges {
+            do{
+                try dataController.viewContext.save()
+                definingFromTable()
+                print("Saved jazz😛 ")
+            }catch let error{
+                print(" Error😩 = \(error.localizedDescription)")
             }
-        case .ended:
-            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { break }
-            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-            DispatchQueue.main.async {
-                print("Hello1234😁")
-                options.contains(.shouldResume) ? print("self.play()") : print("self.pause()") }
+        } else {
+            print("No Changes in nsmanagedobjectcontext")
         }
+        
     }
     
+    func clearDataInCore() {
+          let fetchRequest: NSFetchRequest<JazzModel> = JazzModel.fetchRequest()
+        if let results = try? dataController.viewContext.fetch(fetchRequest) {
+            print("fetchCompleted")
+            let _ = results.map{dataController.viewContext.delete($0)}
+            print("clearData")
+            saved()
+            
+        } else {print("failedFetching😩")}
+    }
     
-    
-    //MARK: Adding NVActivityIndicatorView Loading View
-    func addLoadingIndic(view: UIView) {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        activeIndic = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), padding: 0.0)
-        view.addSubview(activeIndic!)
+    func fetchRequest() {
+        // let vc = selfClass as! TravelLocationsMapViewController
+        
+        let fetchRequest: NSFetchRequest<JazzModel> = JazzModel.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "jazzTitle", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let results = try? dataController.viewContext.fetch(fetchRequest) {
+            print("fetchCompleted")
+           // guard let jazzM = results.first else {print("jazzM😩");return}
+            jazzModel = results.first
+            
+        } else {print("failedFetching😩")}
     }
     
 
     func definingFromTable() {
+        print("jazzTitleCore = \(jazzModel?.jazzTitle ?? "No Title Found")")
         if tempAudioUrl == audioUrl {
             print("Not changed")
           
         } else {
             
-           // savedUrlsfunc()
-            tempAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String ?? audioUrl
+
+            tempAudioUrl = jazzModel?.jazzAudioUrl ?? audioUrl
             playerItem = nil
             activityIndicAndShowButton()
             delegate?.startAnimatingBars(state: false)
@@ -112,11 +112,11 @@ class HomeFn: NSObject {
     
 
     func definingPlayer() {
-        tempAudioUrl = UserDefaults.standard.value(forKey: HomeFn.jazzurl) as? String ?? audioUrl
-      //  tempAudioUrl = audioUrl
+
+         tempAudioUrl = jazzModel?.jazzAudioUrl ?? audioUrl
         if playerItem == nil {
              print("PlayerItem is Nil")
-            activityIndicAndHideButton()
+            self.activityIndicAndHideButton()
             prepareToPlay()
             
         } else {
@@ -124,7 +124,7 @@ class HomeFn: NSObject {
            
             if !isBufferingCompleted {
                 print("BufferingIsNotcompleted")
-                activityIndicAndHideButton()
+                self.activityIndicAndHideButton()
                 delegate?.startAnimatingBars(state: false)
             } else {
                 print("BufferingIscompleted")
@@ -134,9 +134,9 @@ class HomeFn: NSObject {
         }
     }
     
+    
     func prepareToPlay() {
         
-      
         guard let url = URL(string: tempAudioUrl) else {
             delegate?.callAlertView(title: "Station Not Available!!", message: "Please try another station", buttonTitle: "OK")
             return
@@ -182,10 +182,8 @@ class HomeFn: NSObject {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        
         if keyPath == #keyPath(AVPlayerItem.status) {
             let status: AVPlayerItem.Status
-            
             if let statusNumber = change?[.newKey] as? NSNumber {
                 status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
                 print("Status Unknown2")
@@ -197,17 +195,14 @@ class HomeFn: NSObject {
             switch status {
             case .readyToPlay:
                 print("ReadyToPlay")
-                
                 delegate?.startAnimatingBars(state: true)
                 
-
             case .failed:
                 print("FailedToPlay")
        
             case .unknown:
                 print("NotReadyToPlay")
             
-                
             }
         }
         
@@ -223,55 +218,6 @@ class HomeFn: NSObject {
 
     }
     
-    func activityIndicAndHideButton() {
-        print("Activit Started")
-        activeIndic?.startAnimating()
-        delegate?.hidePlayButton(state: true)
-    }
-    
-    func activityIndicAndShowButton() {
-        print("Activit Stopped")
-        
-        activeIndic?.stopAnimating()
-        delegate?.hidePlayButton(state: false)
-    }
-    
-    
-    func createNowPlayingAnimation(imageData: UIImageView) {
-        imageData.animationImages = AnimationFrames.createFrames()
-        imageData.animationDuration = 0.7
-    }
-    
-    //MARK: Add Notifications for remote Player
-    func remotePlayerNotification() {
-        addNotificationToPlay()
-        addNotificationToPause()
-    }
-    
-    func addNotificationToPlay() {
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("playNEW"), object: nil, queue: nil) { (notification) in
-            self.activityIndicAndShowButton()
-            self.delegate?.changePlayButtonState(state: true)
-            self.delegate?.startAnimatingBars(state: true)
-            self.isBufferingCompleted = true
-            print("playIT")
-        }
-        
-    }
-    
-    func addNotificationToPause() {
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("pauseNEW"), object: nil, queue: nil) { (notification) in
-            
-            self.delegate?.changePlayButtonState(state: false)
-            self.delegate?.startAnimatingBars(state: false)
-            self.isBufferingCompleted = true
-            print("pauseIT")
-            
-        }
-        
-    }
-    
+   
     
 }

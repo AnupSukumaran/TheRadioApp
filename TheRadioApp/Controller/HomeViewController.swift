@@ -20,20 +20,21 @@ class HomeViewController: UIViewController {
     
     
     let home = HomeFn.shared
-    
-   // var activeIndic: NVActivityIndicatorView?
+    var dataController: DataController!
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // InterCheck.shared.checkConnectivity(selfVC: self)
+        
         home.delegate = self
         home.addLoadingIndic(view: LoadingPlate)
         home.createNowPlayingAnimation(imageData: barAnimations)
-        
+        home.dataController = dataController
         home.remotePlayerNotification()
         home.setupRemoteCommandCenter()
         home.setupNotifications()
+        home.fetchRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +52,13 @@ class HomeViewController: UIViewController {
             case .noInternet:
                     print("Has No Internet")
                     self.noNetworkLB.isHidden = false
+                   
                     self.home.activityIndicAndHideButton()
                     self.home.player?.pause()
                     self.barAnimations.stopAnimating()
                     self.home.playerItem = nil
                     self.playButton.isSelected = false
+                 self.noNetworkLB.text = "No Network"
             }
         }
     }
@@ -64,16 +67,10 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-
-        jazzTitle.text = UserDefaults.standard.value(forKey: HomeFn.jazzname) as? String ?? home.audioTitle
-    
-        
+        jazzTitle.text = home.jazzModel?.jazzTitle ?? home.audioTitle
     }
     
-    
-    
-  
-    
+
     @IBAction func playAction(_ sender: UIButton) {
    
         sender.isSelected = !sender.isSelected
@@ -93,7 +90,7 @@ class HomeViewController: UIViewController {
     }
     
     deinit {
-        print("Deinit")
+        
         home.deallocatedObservers()
         InterCheck.shared.removeNetworkObserver(view: self)
         NotificationCenter.default.removeObserver(self)
@@ -117,11 +114,13 @@ extension HomeViewController: FunctionRemainingActionDelegate {
             print("StoppedBarAnimating")
         }
     }
-    
 
         func hidePlayButton(state: Bool) {
             self.playButton.isHidden = state
-   
+           
+                noNetworkLB.isHidden = !state
+                noNetworkLB.text = "Loading..."
+            
         }
     
     func changePlayButtonState(state: Bool) {
