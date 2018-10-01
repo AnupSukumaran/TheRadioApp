@@ -18,4 +18,4 @@ The Second Page is being listed using the plist file called the **Jazzlist.plist
 ## Persisted Data
 
 Only the selections are made persistent i.e The _Station title_ and the _selected audio urls from the tableview_.
-Both are saved using **userdefaults**.
+Both are saved using **CoreData**.
