@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     
     let home = HomeFn.shared
     var dataController: DataController!
-   
+    var hasNetwork = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,22 +43,25 @@ class HomeViewController: UIViewController {
         InterCheck.shared.networkNotifc(view: self) { (state) in
             switch state {
             case .hasInternet:
-                    self.noNetworkLB.isHidden = true
                     print("Has Internet")
+                    self.hasNetwork = true
+                    self.noNetworkLB.isHidden = true
+                    
                     if !self.playButton.isSelected{
                         self.playButton.isSelected = false
                         self.home.activityIndicAndShowButton()
                    }
             case .noInternet:
                     print("Has No Internet")
+                    self.hasNetwork = false
                     self.noNetworkLB.isHidden = false
                    
-                    self.home.activityIndicAndHideButton()
+                  //  self.home.activityIndicAndHideButton()
                     self.home.player?.pause()
                     self.barAnimations.stopAnimating()
                     self.home.playerItem = nil
                     self.playButton.isSelected = false
-                 self.noNetworkLB.text = "No Network"
+                    self.noNetworkLB.text = "No Network"
             }
         }
     }
@@ -73,20 +76,27 @@ class HomeViewController: UIViewController {
 
     @IBAction func playAction(_ sender: UIButton) {
    
-        sender.isSelected = !sender.isSelected
-        print("called")
-        if sender.isSelected{
-            print("buttonsisSelcted = \(sender.isSelected)")
-            self.home.definingPlayer()
-            self.home.player?.play()
-            
-            
+        
+        
+        if hasNetwork{
+            sender.isSelected = !sender.isSelected
+            if sender.isSelected{
+                print("buttonsisSelcted = \(sender.isSelected)")
+                self.home.definingPlayer()
+                self.home.player?.play()
+                
+            } else {
+                print("buttonsisSelcted = \(sender.isSelected)")
+                self.home.player?.pause()
+                self.barAnimations.stopAnimating()
+            }
         } else {
-            print("buttonsisSelcted = \(sender.isSelected)")
-            self.home.player?.pause()
-            self.barAnimations.stopAnimating()
+//            AlertView.showAlert(title: "No Internet", message: "Please check your internet connection", buttonTitle: "OK", selfClass: self)
+            
+            self.showAlert(title: "No Internet", message: "Please check your internet connection", buttonTitle: "OK", selfClass: self)
+           
         }
-      
+ 
     }
     
     deinit {
@@ -101,7 +111,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: FunctionRemainingActionDelegate {
     func callAlertView(title: String, message: String, buttonTitle: String) {
-        AlertView.showAlert(title: title, message: message, buttonTitle: buttonTitle, selfClass: self)
+       
+        self.showAlert(title: title, message: message, buttonTitle: buttonTitle, selfClass: self)
     }
     
     

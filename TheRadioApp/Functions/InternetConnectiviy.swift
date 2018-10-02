@@ -25,7 +25,7 @@ class InterCheck {
     func checkConnectivity(selfVC: UIViewController, completionBlk: (() -> Void)? = nil ) {
 
         if reachability?.connection == nil {
-            AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: selfVC)
+            selfVC.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: selfVC)
         } else {
             
             completionBlk?()
@@ -52,7 +52,7 @@ class InterCheck {
             } else {
                 completion(.noInternet)
                 
-                AlertView.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: view)
+                view.showAlert(title: "Internet Connection is not available", message: "Please check your internet connection and try again.", buttonTitle: "OK", selfClass: view)
             }
             
         }

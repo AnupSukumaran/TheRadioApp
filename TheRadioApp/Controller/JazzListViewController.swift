@@ -27,10 +27,7 @@ class JazzListViewController: UIViewController {
   
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-     //    InterCheck.shared.checkConnectivity(selfVC: self) 
-    }
+  
 
 }
 
@@ -76,7 +73,7 @@ extension JazzListViewController: UITableViewDelegate {
         let jazzurl = jazzAudioUrl[indexPath.row]
         
         guard URL(string: jazzurl) != nil else {
-            AlertView.showAlert(title: "Something is wrong with the stations", message: "Please try another stations", buttonTitle: "OK", selfClass: self)
+            self.showAlert(title: "Something is wrong with the stations", message: "Please try another stations", buttonTitle: "OK", selfClass: self)
             return
             
         }
